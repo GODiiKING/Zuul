@@ -9,3 +9,9 @@ class Program
 }
 // test program
 // Read more information
+
+// git remote add origin https://github.com/GODiiKING/Zuul.git
+
+// git commit -am ""
+
+// git push origin master
