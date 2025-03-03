@@ -5,11 +5,13 @@ class Game
 	// Private fields
 	private Parser parser;
 	private Room currentRoom;
+	private Player player; // private Room currentRoom; //! Phase 1
 
 	// Constructor
 	public Game()
 	{
 		parser = new Parser();
+		player = new Player(); //! Phase 1
 		CreateRooms();
 	}
 
@@ -44,6 +46,7 @@ class Game
 
 		// Start game outside
 		currentRoom = outside;
+		player.CurrentRoom = outside;//! Phase 1
 	}
 
 	//  Main play routine. Loops until end of play.
@@ -73,6 +76,7 @@ class Game
 		Console.WriteLine("Type 'help' if you need help.");
 		Console.WriteLine();
 		Console.WriteLine(currentRoom.GetLongDescription());
+		Console.WriteLine(player.CurrentRoom.GetLongDescription()); //! Phase 1
 	}
 
 	// Given a command, process (that is: execute) the command.
@@ -94,10 +98,13 @@ class Game
 				PrintHelp();
 				break;
 			case "go":
-				GoRoom(command);
+				GoRoom(command); //! Phase 1
 				break;
 			case "quit":
 				wantToQuit = true;
+				break;
+				case "look":
+				PrintLook();
 				break;
 		}
 
@@ -118,6 +125,10 @@ class Game
 		// let the parser print the commands
 		parser.PrintValidCommands();
 	}
+	private void PrintLook() //! Phase 1
+	{
+		Console.WriteLine("There are no items in this area...");
+	}
 
 	// Try to go to one direction. If there is an exit, enter the new
 	// room, otherwise print an error message.
@@ -133,7 +144,7 @@ class Game
 		string direction = command.SecondWord;
 
 		// Try to go to the next room.
-		Room nextRoom = currentRoom.GetExit(direction);
+		Room nextRoom = player.CurrentRoom.GetExit(direction); //! Phase 1
 		if (nextRoom == null)
 		{
 			Console.WriteLine("There is no door to "+direction+"!");
@@ -141,6 +152,6 @@ class Game
 		}
 
 		currentRoom = nextRoom;
-		Console.WriteLine(currentRoom.GetLongDescription());
+		Console.WriteLine(player.CurrentRoom.GetLongDescription()); //! Phase 1
 	}
 }
