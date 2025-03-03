@@ -47,6 +47,7 @@ class Game
 		// Start game outside
 		currentRoom = outside;
 		player.CurrentRoom = outside; //! Phase 1
+		Item mousetail = new Item(1, "Why did you even pick this up? Pretty gross if u ask me");
 	}
 
 	//  Main play routine. Loops until end of play.
@@ -124,6 +125,13 @@ class Game
 		Console.WriteLine();
 		// let the parser print the commands
 		parser.PrintValidCommands();
+	}
+
+	private void PrintStatus()
+	{
+		//Console.WriteLine("Your health is: " + player.health);
+		Console.WriteLine("Your backpack contains: "+ player.backpack.showInventory());
+		// player.backpack.PrintItems();
 	}
 	private void PrintLook() //! Phase 1
 	{
