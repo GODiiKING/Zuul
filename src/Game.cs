@@ -98,12 +98,12 @@ class Game
 				PrintHelp();
 				break;
 			case "go":
-				GoRoom(command); //! Phase 1
+				GoRoom(command); 
 				break;
 			case "quit":
 				wantToQuit = true;
 				break;
-				case "look":
+				case "look": //! Phase 1
 				PrintLook();
 				break;
 		}
