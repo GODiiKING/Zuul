@@ -46,7 +46,7 @@ class Game
 
 		// Start game outside
 		currentRoom = outside;
-		player.CurrentRoom = outside;//! Phase 1
+		player.CurrentRoom = outside; //! Phase 1
 	}
 
 	//  Main play routine. Loops until end of play.
