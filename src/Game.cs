@@ -24,6 +24,9 @@ class Game
 		Room pub = new Room("in the campus pub");
 		Room lab = new Room("in a computing lab");
 		Room office = new Room("in the computing admin office");
+		// New rooms //! 04/03/2025
+		Room basement = new Room("in the basement");
+		Room attic = new Room("in the attic");
 
 		// Initialise room exits
 		outside.AddExit("east", theatre);
@@ -39,6 +42,9 @@ class Game
 
 		office.AddExit("west", lab);
 
+		attic.AddExit("down", outside); //! 04/03/2025
+		basement.AddExit("up", outside); //! 04/03/2025
+
 		// Create your Items here
 		// ...
 		// And add them to the Rooms
@@ -48,6 +54,8 @@ class Game
 		currentRoom = outside;
 		player.CurrentRoom = outside; //! Phase 1
 		Item mousetail = new Item(1, "Why did you even pick this up? Pretty gross if u ask me");
+
+		outside.AddItem(mousetail); //! 04/03/2025
 	}
 
 	//  Main play routine. Loops until end of play.
@@ -107,6 +115,15 @@ class Game
 				case "look": //! Phase 1
 				PrintLook();
 				break;
+				case "status": //! 04/03/2025
+				PrintStatus();
+				break;
+			case "take": //! 04/03/2025
+				Take(command);
+				break;
+			case "drop": //! 04/03/2025
+				Drop(command);
+				break;
 		}
 
 		return wantToQuit;
@@ -161,5 +178,20 @@ class Game
 
 		currentRoom = nextRoom;
 		Console.WriteLine(player.CurrentRoom.GetLongDescription()); //! Phase 1
+	}
+
+	//methods //! 04/03/2025
+	private void Take(Command command)
+	{
+		//TODO implement
+
+		Console.WriteLine("You have picked up" );
+
+	}
+
+	private void Drop(Command command)
+	{
+		//TODO implement
+		Console.WriteLine("You have dropped the item");
 	}
 }
