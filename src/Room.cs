@@ -3,9 +3,12 @@ using System.Collections.Generic;
 class Room
 {
 	// Private fields
+
+
 	private string description;
 	private Dictionary<string, Room> exits; // stores exits of this room.
-	private List<Item> items; // stores items in this room //! 04/03/2025
+	private Inventory chest;
+	public List<Item> items; // stores items in this room
 
 	// Create a room described "description". Initially, it has no exits.
 	// "description" is something like "in a kitchen" or "in a court yard".
@@ -13,7 +16,9 @@ class Room
 	{
 		description = desc;
 		exits = new Dictionary<string, Room>();
-		items = new List<Item>(); // initialize the items list //! 04/03/2025
+		items = new List<Item>(); // initialize the items list
+		chest = new Inventory(10000000); // initialize the chest
+
 	}
 
 	// Define an exit for this room.
@@ -40,6 +45,7 @@ class Room
 		return str;
 	}
 
+
 	// Return the room that is reached if we go from this room in direction
 	// "direction". If there is no room in that direction, return null.
 	public Room GetExit(string direction)
@@ -49,6 +55,8 @@ class Room
 			return exits[direction];
 		}
 		return null;
+
+
 	}
 
 	// Return a string describing the room's exits, for example
@@ -61,25 +69,18 @@ class Room
 		return str;
 	}
 
-	// Add an item to the room
-	public void AddItem(Item item)
-	{
-		items.Add(item);
-	}
+	// // Add an item to the room
+	// public void AddItem(Item item)
+	// {
+	// 	items.Add(item);
 
-	//field //! 04/03/2025
-	private Inventory chest;
+	
+	// }
 
-	//property //! 04/03/2025
+	//property
 	public Inventory Chest
 	{
 		get { return chest; }
 	}
 
-	//consturctor //! 04/03/2025
-	public Room()
-	{
-		//a room can handle a big Inventory
-		chest = new Inventory(10000000);
-	}
 }
