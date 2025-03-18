@@ -32,20 +32,23 @@ class Player
 
 		switch (itemName)
 		{
-			case "mousetail":
-				// CurrentRoom.Chest.Put(itemName, item);
-				Console.WriteLine("You used the mousetail. It's a bit disgusting, but you feel a bit better.");
-				this.Heal(1);
+			case "truth":
+				// CurrentRoom.Chest.Put(itemName, item1);
+				Console.WriteLine("If you’re reading this, then you’ve finally woken up. You don’t remember, do you? The years you spent chasing shadows, the nightmares that followed you");
+				this.Heal(10);
 				Backpack.Remove(itemName);
 				break;
-			case "poopotion":
-				Console.WriteLine("'Ugh, this tastes like absolute shit. Oh wait...' You feel a little worse after drinking this");
-				this.Damage(5);
+			case "past":
+				// CurrentRoom.Chest.Put(itemName, item2);
+				Console.WriteLine("You wanted the truth so badly, but you never realized it would cost you your mind. The things you saw — the things you exposed — weren’t just stories.");
+				this.Heal(10);
+				Backpack.Remove(itemName);
 				break;
-
-			case "slingshot":
-			Console.WriteLine("U used the slingshot");
-			this.Damage(1);		
+			case "key":
+				// CurrentRoom.Chest.Put(itemName, item7);
+				Console.WriteLine("You’re not just trapped in the Tower of Fear Nexus. You are the tower. And it will never let you go. There is no exit, Crane. There never was.");
+				this.Heal(10);
+				Backpack.Remove(itemName);
 				break;
 				// default:
 				// return item.Use(); // Call the Use method on the Item instance

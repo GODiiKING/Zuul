@@ -57,4 +57,9 @@ class Inventory
         }
         return string.Join(", ", items.Keys);
     }
+
+    public bool HasItem(string itemName)
+{
+    return items.ContainsKey(itemName); // Assuming 'items' is a dictionary storing the inventory
+}
 }
