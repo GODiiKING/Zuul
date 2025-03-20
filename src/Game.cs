@@ -53,28 +53,35 @@ class Game
 		chamber = theExitHall; // Assign the Exit Hall to the chamber field for special logic.
 
 		// Initialize room exits
-		theAwakeningChamber.AddExit("east", hallOfEchoes);
-		theAwakeningChamber.AddExit("south", theBloodstainedSanctuary);
-		theAwakeningChamber.AddExit("west", theShatteredLibrary);
-		theAwakeningChamber.AddExit("down", theMirrorChamber);
+		// Define the exits for the Awakening Chamber.
+		theAwakeningChamber.AddExit("east", hallOfEchoes); // Connects to the Hall of Echoes.
+		theAwakeningChamber.AddExit("south", theBloodstainedSanctuary); // Connects to the Bloodstained Sanctuary.
+		theAwakeningChamber.AddExit("west", theShatteredLibrary); // Connects to the Shattered Library.
+		theAwakeningChamber.AddExit("down", theMirrorChamber); // Connects to the Mirror Chamber.
 
+		// Define the exits for the Hall of Echoes.
+		hallOfEchoes.AddExit("west", theAwakeningChamber); // Connects back to the Awakening Chamber.
+		hallOfEchoes.AddExit("east", theExitHall);  // Connects to the Exit Hall.
 
-		hallOfEchoes.AddExit("west", theAwakeningChamber);
-		hallOfEchoes.AddExit("east", theExitHall);
-		theExitHall.AddExit("west", hallOfEchoes);
+		// Define the exits for the Exit Hall.
+		theExitHall.AddExit("west", hallOfEchoes); // Connects back to the Hall of Echoes.
 
+		// Define the exits for the Shattered Library.
+		theShatteredLibrary.AddExit("west", theAwakeningChamber); // Connects back to the Awakening Chamber.
 
-		theShatteredLibrary.AddExit("west", theAwakeningChamber);
+		// Define the exits for the Bloodstained Sanctuary.
+		theBloodstainedSanctuary.AddExit("north", theAwakeningChamber);  // Connects back to the Awakening Chamber.
+		theBloodstainedSanctuary.AddExit("east", theSilentPrison); // Connects to the Silent Prison.
 
-		theBloodstainedSanctuary.AddExit("north", theAwakeningChamber);
-		theBloodstainedSanctuary.AddExit("east", theSilentPrison);
+		// Define the exits for the Silent Prison.
+		theSilentPrison.AddExit("west", theBloodstainedSanctuary);  // Connects back to the Bloodstained Sanctuary.
+		theSilentPrison.AddExit("up", theAbyssalHallway); // Connects to the Abyssal Hallway.
 
-		theSilentPrison.AddExit("west", theBloodstainedSanctuary);
-		theSilentPrison.AddExit("up", theAbyssalHallway);
+		// Define the exits for the Mirror Chamber.
+		theMirrorChamber.AddExit("up", theAwakeningChamber);  // Connects back to the Awakening Chamber.
 
-
-		theMirrorChamber.AddExit("up", theAwakeningChamber);
-		theAbyssalHallway.AddExit("down", theSilentPrison);
+		// Define the exits for the Abyssal Hallway.
+		theAbyssalHallway.AddExit("down", theSilentPrison);  // Connects back to the Silent Prison.
 
 
 		// Create your Items here
@@ -99,6 +106,7 @@ class Game
 	//  Main play routine. Loops until end of play.
 	public void Play()
 	{
+		// Display the welcome message to introduce the game and provide context.
 		PrintWelcome(); // Display the welcome message.
 
 		// Enter the main command loop. Here we repeatedly read commands and
@@ -115,8 +123,10 @@ class Game
 
 			finished = ProcessCommand(command); // Process the command and check if the game should end.
 			//! if player is NOT alive (!) then finished is true
+			// Check if the player has died (health <= 0).
 			if (!player.IsAlive())  // Check if the player has died.
 			{
+				// If the player is not alive, set the finished flag to true and display a death message.
 				finished = true;
 				Console.WriteLine("You died!");
 			}
@@ -128,15 +138,23 @@ class Game
 	}
 
 	// Print out the opening message for the player.
-	private void PrintWelcome()
+	private void PrintWelcome() // The PrintWelcome method serves as the game's introduction
 	{
+		// Display the game's title to welcome the player.
 		Console.WriteLine("Welcome to 'Tower of Fear Nexus'");
 
+		// Provide a brief backstory about the protagonist, Crane Ravenlock.
+    	// This sets the tone and context for the game.
 		Console.WriteLine("Crane Ravenlock was once an investigative journalist, known for chasing the darkest stories. But the truth came with a price.");
 
+		// Describe the psychological toll of Crane's discoveries, adding a sense of mystery and dread.
 		Console.WriteLine("The horrors he uncovered never left him. They followed him into his dreams.");
 
+    	// Inform the player that they can type 'help' to see a list of available commands.
 		Console.WriteLine("Type 'help' if you need help.");
+
+		    // Display the description of the player's current room.
+    	// This gives the player an immediate sense of their surroundings.
 		Console.WriteLine(player.CurrentRoom.GetLongDescription());
 
 	}
@@ -146,41 +164,45 @@ class Game
 	// Otherwise false is returned.
 	private bool ProcessCommand(Command command)
 	{
+		// Flag to determine if the player wants to quit the game.
 		bool wantToQuit = false;
 
+		// Check if the command is unknown (not recognized).
+        // Check if the command is known. If not, say we don't know what you mean.
 		if (command.IsUnknown())
 		{
 			Console.WriteLine("I don't know what you mean...");
 			return wantToQuit; // false
 		}
 
+		// Process the command based on its command word.
 		switch (command.CommandWord)
 		{
-			case "help":
+			case "help": // Display help information to the player.
 				PrintHelp();
 				break;
-			case "go":
+			case "go": // Move the player to another room.
 				GoRoom(command);
 				break;
-			case "quit":
+			case "quit": // Set the flag to true, indicating the player wants to quit.
 				wantToQuit = true;
 				break;
-			case "look":
+			case "look": // Display the items in the current room.
 				PrintLook();
 				break;
-			case "status":
+			case "status": // Display the player's current health and inventory status.
 				PrintStatus();
 				break;
-			case "take":
+			case "take": // Allow the player to take an item from the room's chest.
 				Take(command);
 				break;
-			case "drop":
+			case "drop": // Allow the player to drop an item into the room's chest.
 				Drop(command);
 				break;
-			case "use":
+			case "use": // Allow the player to use an item from their inventory.
 				PrintUse(command);
 				break;
-			case "overFlowChamber":
+			case "overFlowChamber": // Placeholder for special logic related to the Exit Hall.
 				break;
 
 		}
@@ -196,17 +218,26 @@ class Game
 	// Here we print the mission and a list of the command words.
 	private void PrintHelp()
 	{
+		// Display a message to the player indicating their current state of being lost and uncertain.
 		Console.WriteLine("Lost and alone.");
 		Console.WriteLine("You don`t know if an exit truly exists.");
 		Console.WriteLine();
 		// let the parser print the commands
+		// Let the parser print the list of valid commands available to the player.
+    	// This helps the player understand what actions they can take in the game.
 		parser.PrintValidCommands();
 	}
 
 	private void PrintStatus()
 	{
+		// Display the player's current health.
 		Console.WriteLine("Your Health is: " + player.Health);
+
+		// Display the contents of the player's backpack.
+    	// The ShowInventory method lists all items in the backpack.
 		Console.WriteLine("Your backpack contains: " + player.Backpack.ShowInventory());
+
+		// Display the total weight of items the player is carrying and the remaining free space in the backpack.
 		Console.WriteLine("You are carrying: " + player.Backpack.TotalWeight() + "kg. You have " + player.Backpack.FreeWeight() + "kg free space.");
 	}
 
@@ -238,9 +269,10 @@ private void PrintUse(Command command)
             Console.WriteLine("You don't have the key in your inventory."); // Inform the player.
             return; // Exit the method if the key is not in the inventory.
         }
-
+		// Check if the player is in the Exit Hall (chamber).
         if (player.CurrentRoom == chamber) // chamber is theExitHall
         {
+			// Inform the player that the door opens and they have escaped.
             Console.WriteLine("As you use 'key' on the door to the east, it opens, revealing a path to freedom.");
             Console.WriteLine("Congratulations! You have escaped the Tower of Fear Nexus.");
             Console.WriteLine("Press [Enter] to continue.");
@@ -253,12 +285,16 @@ private void PrintUse(Command command)
     }
     else if (player.Use(itemName) == false)
     {
+		// If the item is not in the player's inventory, inform them.
         Console.WriteLine($"You don't have a {itemName} to use.");
     }
 }
 
 	private void PrintLook()
 	{
+	// Display the items currently in the room's chest.
+    // The ShowInventory method of the chest returns a string listing all items in the chest.
+    // If the chest is empty, it will return "Nothing".
 		Console.WriteLine("Items in the room: " + player.CurrentRoom.Chest.ShowInventory());
 	}
 
@@ -341,7 +377,7 @@ private void PrintUse(Command command)
 				break;
 		}
 		// Add the item to the player's backpack.
-		// player.Backpack.Put(itemName, item);
+		// player.Backpack.Put(itemName, item); //!(check later)
 
 	}
 
