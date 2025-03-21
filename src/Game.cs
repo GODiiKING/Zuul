@@ -118,7 +118,7 @@ class Game
 			stopwatch.Start(); // Start the stopwatch for tracking time in the Exit Hall. //! (Only room 3)
 
 			Command command = parser.GetCommand(); // Get the player's command.
-			OverFlowChamber(command); // Apply special logic for the Exit Hall.
+			EndGame(command); // Apply special logic for the Exit Hall.
 
 
 			finished = ProcessCommand(command); // Process the command and check if the game should end.
@@ -201,8 +201,6 @@ class Game
 				break;
 			case "use": // Allow the player to use an item from their inventory.
 				PrintUse(command);
-				break;
-			case "overFlowChamber": // Placeholder for special logic related to the Exit Hall.
 				break;
 
 		}
@@ -412,7 +410,7 @@ private void PrintUse(Command command)
 
 	//! Special logic for the Exit Hall room.
 	// This method is called when the player is in the Exit Hall room.
-	private void OverFlowChamber(Command command)
+	private void EndGame(Command command)
 	{
 		// Check if the player is currently in the Exit Hall (chamber).
 		if (player.CurrentRoom == chamber) // Use a proper identifier
