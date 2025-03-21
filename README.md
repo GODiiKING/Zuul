@@ -35,6 +35,7 @@ dotnet run
     - [**Health**](#health)
     - [**Special Rooms**](#special-rooms)
   - [**Project Structure**](#project-structure)
+  - [**UML Diagram**](#uml-diagram)
   - [**How to Contribute**](#how-to-contribute)
   - [**License**](#license)
 
@@ -128,6 +129,18 @@ src/
 Program.cs              # Entry point of the application.
 README.md               # Documentation for the project.
 ```
+
+---
+
+## **UML Diagram**
+
+The following UML diagram represents the structure of the project, including the relationships between the main classes:
+
+![UML Diagram](UML.graphml)
+
+You can open the `UML.graphml` file in a tool like [yEd Graph Editor](https://www.yworks.com/products/yed) to view and edit the diagram.
+
+---
 
 ---
 
