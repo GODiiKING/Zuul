@@ -13,6 +13,8 @@ dotnet run
 ```
 # Zuul: Tower of Fear Nexus
 
+![Tower of Fear Nexus](Tower%20of%20Fear%20Nexus.png)
+
 **Zuul** is a text-based adventure game where you explore the mysterious and eerie **Tower of Fear Nexus**. As the protagonist, **Crane Ravenlock**, you must navigate through rooms, solve puzzles, and uncover the truth while battling the psychological toll of your journey.
 
 ---
