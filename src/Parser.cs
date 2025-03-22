@@ -14,6 +14,8 @@ class Parser
         commandLibrary = new CommandLibrary(); // Create a new CommandLibrary instance.
     }
 
+
+    // Key Methods:
     // Reads and interprets the user input. Returns a Command object.
     // This method splits the input into up to three words and validates the first word.
     // Returns:
@@ -44,6 +46,9 @@ class Parser
         return new Command(null, null, null);
     }
 
+
+    // Key Methods:
+    // Method: Prints a list of valid command words from the command library.
     // Prints a list of valid command words from the command library.
     // This is useful for displaying the available commands to the player.
     public void PrintValidCommands()

@@ -5,10 +5,12 @@ class Inventory
     //! Fields
 
     // The maximum weight capacity of the inventory.
+    // Key Properties
     private int maxWeight; 
 
     // A dictionary to store items in the inventory.
     // The key is the item's name (e.g., "key", "sword"), and the value is the Item object.
+    // Key Properties
     private Dictionary<string, Item> items;
 
     // Constructor
@@ -30,21 +32,26 @@ class Inventory
         int total = 0; // Initialize the total weight.
         foreach (var item in items.Values) // Iterate through all items in the inventory.
         {
-            total += item.Weight; // Add each item's weight to the total.
+            total += item.Weight; //! Add each item's weight to the total.
         }
         return total;  // Return the total weight.
     }
 
+
+
+    // Key Methods:
     // Calculate the remaining weight capacity of the inventory.
     // Returns:
     // - The free weight available in the inventory.
     public int FreeWeight()
     {
-        return maxWeight - TotalWeight(); // Subtract the total weight from the maximum weight.
+        return maxWeight - TotalWeight(); //! Subtract the total weight from the maximum weight.
     }
 
 
 
+
+    // Key Methods:
     // Add an item to the inventory if there is enough free weight.
     // Parameters:
     // - itemName: The name of the item to add.
@@ -55,13 +62,14 @@ class Inventory
     {
         if (item.Weight <= FreeWeight()) // Check if the item fits within the free weight.
         {
-            items[itemName] = item; // Add the item to the inventory.
+            items[itemName] = item; //! Add the item to the inventory.
             return true; // Indicate success.
         }
         return false;  // Indicate failure if there isn't enough space.
     }
 
 
+    // Key Methods:
     // Retrieve an item from the inventory and remove it.
     // Parameters:
     // - itemName: The name of the item to retrieve.
@@ -70,7 +78,7 @@ class Inventory
     public Item Get(string itemName)
     {
         items.TryGetValue(itemName, out Item item); // Try to get the item from the dictionary.
-        items.Remove(itemName);  // Remove the item from the inventory.
+        items.Remove(itemName);  //! Remove the item from the inventory.
         return item;  // Return the item (or null if it wasn't found).
     }
 
@@ -84,6 +92,7 @@ class Inventory
     }
 
 
+    // Key Methods:
     // Display the names of all items in the inventory.
     // Returns:
     // - A comma-separated string of item names, or "Nothing" if the inventory is empty.
@@ -91,7 +100,7 @@ class Inventory
     {
         if (items.Count == 0) // Check if the inventory is empty.
         {
-            return "Nothing"; // Return "Nothing" if there are no items.
+            return "Nothing"; //! Return "Nothing" if there are no items.
         }
         return string.Join(", ", items.Keys);// Join the item names with commas and return the result.
     }
@@ -104,7 +113,8 @@ class Inventory
     // - True if the item exists, false otherwise.
     public bool HasItem(string itemName)
 {
-    return items.ContainsKey(itemName); // Check if the item exists in the dictionary.
+    return items.ContainsKey(itemName); //! Check if the item exists in the dictionary.
     // Assuming 'items' is a dictionary storing the inventory
 }
+    //! Check if a specific item exists in the inventory
 }

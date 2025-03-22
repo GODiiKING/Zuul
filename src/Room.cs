@@ -7,6 +7,7 @@ class Room
     //! Private fields
 
     // The description of the room (e.g., "in a kitchen" or "in a courtyard").
+	// This provides a brief summary of the room's appearance or purpose.
     public string Description { get; private set; }
     private string description;
 
@@ -18,6 +19,13 @@ class Room
     // The chest can hold items with a large capacity.
     private Inventory chest;
 
+
+
+
+
+
+
+    //! Constructor
     // Constructor: Creates a room with a given description.
     // Initially, the room has no exits and an empty chest.
     public Room(string desc)
@@ -27,10 +35,12 @@ class Room
         chest = new Inventory(10000000); // Initialize the chest with a large capacity.
     }
 
+
     // Define an exit for this room.
     // Parameters:
-    // - direction: The direction of the exit (e.g., "north").
-    // - neighbor: The room that this exit leads to.
+    //! - direction: The direction of the exit (e.g., "north").
+    //! - neighbor: The room that this exit leads to.
+    // Key Methods:
     public void AddExit(string direction, Room neighbor)
     {
         exits.Add(direction, neighbor);
@@ -43,10 +53,13 @@ class Room
         return description;
     }
 
+
+
+
     // Return a long description of the room, including its description and exits.
     // Example:
-    // "You are in the kitchen.
-    //  Exits: north, west"
+    //! "You are in the kitchen.
+    //!  Exits: north, west"
     public string GetLongDescription()
     {
         string str = ""; // Initialize the description string.
@@ -56,11 +69,15 @@ class Room
         return str;
     }
 
+
+
+
+
     // Return the room that is reached if we go from this room in the given direction.
     // Parameters:
-    // - direction: The direction to move (e.g., "north").
+    //! - direction: The direction to move (e.g., "north").
     // Returns:
-    // - The neighboring room if it exists, or null if there is no exit in that direction.
+    //! - The neighboring room if it exists, or null if there is no exit in that direction.
     public Room GetExit(string direction)
     {
         if (exits.ContainsKey(direction))
@@ -69,6 +86,10 @@ class Room
         }
         return null;
     }
+
+
+
+
 
     // Return a string describing the room's exits.
     // Example:
@@ -80,6 +101,8 @@ class Room
         return str;
     }
 
+
+    // Key Properties
     // Property to access the chest in the room.
     // The chest is an inventory object that can hold items.
     public Inventory Chest

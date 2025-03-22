@@ -25,6 +25,8 @@ class CommandLibrary
         validCommands.Add("use");    // Allows the player to use an item.
     }
 
+
+    // Key Methods:
     // Checks whether a given string is a valid command word.
     // Parameters:
     // - instring: The command word to check.
@@ -35,6 +37,8 @@ class CommandLibrary
         return validCommands.Contains(instring); // Check if the command exists in the list.
     }
 
+
+    // Key Methods:
     // Returns a list of valid command words as a comma-separated string.
     // This is useful for displaying all available commands to the player.
     // Example: "help, go, quit, look, status, take, drop, use"

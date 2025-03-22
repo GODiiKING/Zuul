@@ -2,12 +2,15 @@
 // A command consists of up to three words: the main command, a second word, and an optional third word.
 class Command
 {
+    // Key Properties
     // The main command word (e.g., "go", "take", "use").
     public string CommandWord { get; init; }
 
+    // Key Properties
     // The second word of the command (e.g., "north", "key").
     public string SecondWord { get; init; }
 
+    // Key Properties
     // The third word of the command (optional, e.g., "door").
     public string ThirdWord { get; init; }
 
@@ -23,6 +26,8 @@ class Command
         ThirdWord = third;     // Set the third word.
     }
 
+
+    // Key Methods:
     // Checks if the command is unknown (i.e., the main command word is null).
     // Returns:
     // - True if the command is invalid or not recognized, false otherwise.
@@ -31,6 +36,8 @@ class Command
         return CommandWord == null;
     }
 
+
+    // Key Methods:
     // Checks if the command has a second word.
     // Returns:
     // - True if the second word is not null, false otherwise.
@@ -39,6 +46,8 @@ class Command
         return SecondWord != null;
     }
 
+
+    // Key Methods:
     // Checks if the command has a third word.
     // Returns:
     // - True if the third word is not null, false otherwise.

@@ -2,7 +2,7 @@
 // This is where the program starts execution
 class Program
 {
-    public static void Main(string[] args)
+    public static void Main(string[] args) // main method
     {
         // Create an instance of the Game class.
         // The Game constructor initializes the game world, including:
