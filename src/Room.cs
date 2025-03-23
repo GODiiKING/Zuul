@@ -11,10 +11,14 @@ class Room
     public string Description { get; private set; }
     private string description;
 
+    //! Purpose of the Dictionary...................................................................
     // A dictionary to store the exits of this room.
-    // The key is the direction (e.g., "north", "east"), and the value is the neighboring room.
+    //(Tkey) The key (string) is the direction (e.g., "north", "east"), and the value is the neighboring room.
+    // (Tvalue) The value is a reference to another (Room) object, representing the room in that direction
     private Dictionary<string, Room> exits;
+    //! Purpose of the Dictionary...................................................................
 
+    // Purpose of the Inventory object
     // An inventory object to represent the chest in the room.
     // The chest can hold items with a large capacity.
     private Inventory chest;
@@ -24,7 +28,7 @@ class Room
 
 
 
-
+    //! Where the Dictionary is Used..................................................................
     //! Constructor
     // Constructor: Creates a room with a given description.
     // Initially, the room has no exits and an empty chest.
@@ -80,7 +84,7 @@ class Room
     //! - The neighboring room if it exists, or null if there is no exit in that direction.
     public Room GetExit(string direction)
     {
-        if (exits.ContainsKey(direction))
+        if (exits.ContainsKey(direction)) // checks exits dictionary contains key matches the specified direction
         {
             return exits[direction];
         }

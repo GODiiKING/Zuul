@@ -20,6 +20,7 @@ class Game
 
 	// Game class
 	// Constructor
+	// Special methods used to (initialize objects)
 	//! Constructor: Initializes the game.
 	public Game()
 	{
@@ -28,7 +29,7 @@ class Game
 		CreateRooms(); // Initialize the rooms and items in the game.
 		stopwatch = new Stopwatch(); // Initialize the stopwatch for tracking time.
 	}
-
+	//! Constructor: Initializes the game.
 
 
 	// Key Methods:
@@ -58,6 +59,7 @@ class Game
 		chamber = theExitHall; // Assign the Exit Hall to the chamber field for special logic. //! EndGame
 
 		// Initialize room exits
+		// "east" is the TKey, hallOfEchoes is the TValue
 		// Define the exits for the Awakening Chamber. //! (Room 1).
 		theAwakeningChamber.AddExit("east", hallOfEchoes); // Connects to the Hall of Echoes. //! (Room 2).
 		theAwakeningChamber.AddExit("south", theBloodstainedSanctuary); // Connects to the Bloodstained Sanctuary.

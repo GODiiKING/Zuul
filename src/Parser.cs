@@ -9,10 +9,12 @@ class Parser
     private readonly CommandLibrary commandLibrary;
 
     // Constructor: Initializes the parser and its command library.
+    //! Constructor
     public Parser()
     {
         commandLibrary = new CommandLibrary(); // Create a new CommandLibrary instance.
     }
+    //! Constructor
 
 
     // Key Methods:

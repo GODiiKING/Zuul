@@ -21,6 +21,7 @@ class Player
     // The backpack has a limited weight capacity.
 	public Inventory Backpack { get; private set; }
 	
+	//! Constructor
 	//* Constructor: Initializes the player's attributes.
 	public Player()
 	{

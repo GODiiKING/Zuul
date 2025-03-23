@@ -6,9 +6,10 @@ class CommandLibrary
 {
     // A list that holds all valid command words.
     // This ensures that only predefined commands are recognized by the game.
-    private readonly List<string> validCommands;
+    private readonly List<string> validCommands; //! List..............................................
 
     // Constructor: Initializes the list of valid command words.
+    //! Constructor
     public CommandLibrary()
     {
         validCommands = new List<string>(); // Initialize the list.
@@ -24,6 +25,7 @@ class CommandLibrary
         validCommands.Add("drop");   // Allows the player to drop an item.
         validCommands.Add("use");    // Allows the player to use an item.
     }
+    //! Constructor
 
 
     // Key Methods:

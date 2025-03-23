@@ -19,12 +19,14 @@ class Command
     // - first: The main command word (can be null if the command is invalid).
     // - second: The second word of the command (can be null if not provided).
     // - third: The third word of the command (can be null if not provided).
+    //! Constructor
     public Command(string first, string second, string third)
     {
         CommandWord = first;   // Set the main command word.
         SecondWord = second;   // Set the second word.
         ThirdWord = third;     // Set the third word.
     }
+    //! Constructor
 
 
     // Key Methods:

@@ -19,6 +19,7 @@ public class Item //! Items can be carried by the player or stored in a room's c
     // Parameters:
     // - weight: The weight of the item.
     // - description: A brief description of the item.
+    //! Constructor
     public Item(int weight, string description)
     {
         // This value is immutable after the item is created.
@@ -26,4 +27,5 @@ public class Item //! Items can be carried by the player or stored in a room's c
         // This value is also immutable after the item is created.
         Description = description; // Set the item's description.
     }
+    //! Constructor
 }

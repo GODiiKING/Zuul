@@ -13,7 +13,7 @@ class Inventory
     // Key Properties
     private Dictionary<string, Item> items;
 
-    // Constructor
+    //! Constructor
     // Constructor: Initializes the inventory with a specified maximum weight.
     // Parameters:
     public Inventory(int maxWeight) // - maxWeight: The maximum weight capacity of the inventory.
@@ -21,6 +21,7 @@ class Inventory
         this.maxWeight = maxWeight; // Set the maximum weight.
         items = new Dictionary<string, Item>();  // Initialize the dictionary to store items.
     }
+    //! Constructor
 
     //! Methods
 
