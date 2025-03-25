@@ -32,5 +32,3 @@ class Program
 //* git push origin master
 // Pushes the committed changes to the master branch of the remote repository
 
-/// somethinhg
-/// 

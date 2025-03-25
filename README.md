@@ -139,7 +139,7 @@ README.md               # Documentation for the project.
 
 The following UML diagram represents the structure of the project, including the relationships between the main classes:
 
-![UML Diagram](UML.graphml)
+![UML Diagram](UML.png)
 
 You can open the `UML.graphml` file in a tool like [yEd Graph Editor](https://www.yworks.com/products/yed) to view and edit the diagram.
 
